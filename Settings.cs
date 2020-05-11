@@ -34,6 +34,11 @@ namespace PclFileConvert
         /// Intervall in dem der Timer für den PCL-Ordner ausgeführt werden soll
         /// </summary>
         public int LookupInterval { get; set; } = 50000;
+
+        /// <summary>
+        /// Tageszahl nach dem alte PDF-Dateien gelöscht werden (0=kein Löschen)
+        /// </summary>
+        public int DeleteOldPdfDayCounter { get; set; } = 0;
         #endregion
     }
 }

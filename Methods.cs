@@ -89,9 +89,31 @@ namespace PclFileConvert
         }
 
         /// <summary>
+        /// Löscht alte PDF-Dateien anhand der Einstellungen
+        /// </summary>
+        /// <param name="logGuiOutput">Optional: Logausgabe</param>
+        internal void DeleteOldPdfFiles(TextBox logGuiOutput = null)
+        {
+            //Prüfen, ob gelöscht werden soll
+            if (ProgramSettings.DeleteOldPdfDayCounter > 0)
+            {
+                //Einzelnen PDF-Dateien durchgehen und prüfen, ob Alter erreicht wurde
+                foreach (string pdfFileName in Directory.GetFiles(ProgramSettings.PdfOutputFolder, "*.pdf"))
+                {
+                    if (new FileInfo(pdfFileName).CreationTime.AddDays(ProgramSettings.DeleteOldPdfDayCounter) < DateTime.Now)
+                    {
+                        File.Delete(pdfFileName);
+                        AddNewLog($"Datei {pdfFileName} ist älter als {ProgramSettings.DeleteOldPdfDayCounter} Tag(e) und wurde gelöscht.", LogType.info, logGuiOutput);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Liest PCL Dateien aus und wandelt diese, mit Hilfe von GhostPCL, in PDF um
         /// </summary>
-        internal void WritePdfFiles(TextBox logGuidOutput = null)
+        /// <param name="logGuiOutput">Optional: Logausgabe</param>
+        internal void WritePdfFiles(TextBox logGuiOutput = null)
         {
             //Pfade prüfen
             if (File.Exists(ProgramSettings.GhostPclPath) == false)
@@ -160,15 +182,15 @@ namespace PclFileConvert
                     pdfProcess.WaitForExit();
 
                     //Protkoll schreiben
-                    AddNewLog($"GhostPCL Rückgabe: {ausgabe}", LogType.info, logGuidOutput);
-                    AddNewLog($"Datei {pclFileName} in PDF konvertiert", LogType.info, logGuidOutput);
+                    AddNewLog($"GhostPCL Rückgabe: {ausgabe}", LogType.info, logGuiOutput);
+                    AddNewLog($"Datei {pclFileName} in PDF konvertiert", LogType.info, logGuiOutput);
 
                     //PDF Datei umbennen und PCL Datei löschen
                     File.Copy(workingPdfName, Path.Combine(ProgramSettings.PdfOutputFolder, fileInfo.Name.Replace(fileInfo.Extension, ".pdf")));
                     File.Delete(workingPdfName);
                     File.Delete(workingFileName);
                 }
-                catch (Exception error) { AddNewLog($"Datei {pclFileName} konnte nicht gewandelt werden: {error.Message} - {error.StackTrace}", LogType.error, logGuidOutput); }
+                catch (Exception error) { AddNewLog($"Datei {pclFileName} konnte nicht gewandelt werden: {error.Message} - {error.StackTrace}", LogType.error, logGuiOutput); }
                 finally { //Aufräumen
                     pdfProcess.Dispose(); writer?.Dispose(); reader?.Dispose(); }                
             }

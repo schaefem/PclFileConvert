@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblPclDir = new System.Windows.Forms.Label();
             this.btnPclDir = new System.Windows.Forms.Button();
             this.slePclDir = new System.Windows.Forms.TextBox();
             this.panMain = new System.Windows.Forms.TableLayoutPanel();
+            this.slePclExtension = new System.Windows.Forms.TextBox();
+            this.lblPclExtension = new System.Windows.Forms.Label();
             this.sleGhostParams = new System.Windows.Forms.TextBox();
             this.lblGhostParams = new System.Windows.Forms.Label();
             this.btnGhostExecutable = new System.Windows.Forms.Button();
@@ -40,29 +42,31 @@
             this.lblGhostExecutable = new System.Windows.Forms.Label();
             this.btnTargetDir = new System.Windows.Forms.Button();
             this.sleTargetDir = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblTargetDir = new System.Windows.Forms.Label();
             this.mleLog = new System.Windows.Forms.TextBox();
             this.btnSaveSettings = new System.Windows.Forms.Button();
             this.sleIntervall = new System.Windows.Forms.NumericUpDown();
             this.lblIntervall = new System.Windows.Forms.Label();
-            this.lblPclExtension = new System.Windows.Forms.Label();
-            this.slePclExtension = new System.Windows.Forms.TextBox();
             this.ckbStart = new System.Windows.Forms.CheckBox();
+            this.lblDeleteOldPdf = new System.Windows.Forms.Label();
+            this.sleDeleteOldPdf = new System.Windows.Forms.NumericUpDown();
+            this.lblDeleteOldPdfInfo = new System.Windows.Forms.Label();
             this.binSettings = new System.Windows.Forms.BindingSource(this.components);
             this.panMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sleIntervall)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sleDeleteOldPdf)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.binSettings)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblPclDir
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(194, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Zu überwachender Ordner";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblPclDir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblPclDir.Location = new System.Drawing.Point(3, 0);
+            this.lblPclDir.Name = "lblPclDir";
+            this.lblPclDir.Size = new System.Drawing.Size(194, 24);
+            this.lblPclDir.TabIndex = 0;
+            this.lblPclDir.Text = "Zu überwachender Ordner";
+            this.lblPclDir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnPclDir
             // 
@@ -106,19 +110,24 @@
             this.panMain.Controls.Add(this.lblGhostExecutable, 0, 2);
             this.panMain.Controls.Add(this.btnTargetDir, 5, 0);
             this.panMain.Controls.Add(this.sleTargetDir, 4, 0);
-            this.panMain.Controls.Add(this.label2, 3, 0);
-            this.panMain.Controls.Add(this.label1, 0, 0);
+            this.panMain.Controls.Add(this.lblTargetDir, 3, 0);
+            this.panMain.Controls.Add(this.lblPclDir, 0, 0);
             this.panMain.Controls.Add(this.btnPclDir, 2, 0);
             this.panMain.Controls.Add(this.slePclDir, 1, 0);
-            this.panMain.Controls.Add(this.mleLog, 0, 5);
-            this.panMain.Controls.Add(this.btnSaveSettings, 0, 6);
+            this.panMain.Controls.Add(this.mleLog, 0, 7);
+            this.panMain.Controls.Add(this.btnSaveSettings, 0, 8);
             this.panMain.Controls.Add(this.sleIntervall, 1, 4);
             this.panMain.Controls.Add(this.lblIntervall, 0, 4);
-            this.panMain.Controls.Add(this.ckbStart, 1, 6);
+            this.panMain.Controls.Add(this.ckbStart, 1, 8);
+            this.panMain.Controls.Add(this.lblDeleteOldPdf, 0, 6);
+            this.panMain.Controls.Add(this.sleDeleteOldPdf, 1, 6);
+            this.panMain.Controls.Add(this.lblDeleteOldPdfInfo, 2, 6);
             this.panMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panMain.Location = new System.Drawing.Point(0, 0);
             this.panMain.Name = "panMain";
-            this.panMain.RowCount = 7;
+            this.panMain.RowCount = 9;
+            this.panMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.panMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.panMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.panMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.panMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
@@ -128,6 +137,26 @@
             this.panMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.panMain.Size = new System.Drawing.Size(1072, 586);
             this.panMain.TabIndex = 3;
+            // 
+            // slePclExtension
+            // 
+            this.slePclExtension.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.binSettings, "PclExtension", true));
+            this.slePclExtension.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.slePclExtension.Location = new System.Drawing.Point(730, 61);
+            this.slePclExtension.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.slePclExtension.Name = "slePclExtension";
+            this.slePclExtension.Size = new System.Drawing.Size(300, 20);
+            this.slePclExtension.TabIndex = 16;
+            // 
+            // lblPclExtension
+            // 
+            this.lblPclExtension.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblPclExtension.Location = new System.Drawing.Point(533, 58);
+            this.lblPclExtension.Name = "lblPclExtension";
+            this.lblPclExtension.Size = new System.Drawing.Size(194, 24);
+            this.lblPclExtension.TabIndex = 15;
+            this.lblPclExtension.Text = "Dateierweiterung für PCL-Dateien";
+            this.lblPclExtension.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // sleGhostParams
             // 
@@ -205,25 +234,25 @@
             this.sleTargetDir.Size = new System.Drawing.Size(300, 20);
             this.sleTargetDir.TabIndex = 4;
             // 
-            // label2
+            // lblTargetDir
             // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(533, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(194, 24);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Zielordner für PDF-Ausgabe";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTargetDir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTargetDir.Location = new System.Drawing.Point(533, 0);
+            this.lblTargetDir.Name = "lblTargetDir";
+            this.lblTargetDir.Size = new System.Drawing.Size(194, 24);
+            this.lblTargetDir.TabIndex = 3;
+            this.lblTargetDir.Text = "Zielordner für PDF-Ausgabe";
+            this.lblTargetDir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // mleLog
             // 
             this.panMain.SetColumnSpan(this.mleLog, 6);
             this.mleLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mleLog.Location = new System.Drawing.Point(3, 85);
+            this.mleLog.Location = new System.Drawing.Point(3, 114);
             this.mleLog.Multiline = true;
             this.mleLog.Name = "mleLog";
             this.mleLog.ReadOnly = true;
-            this.mleLog.Size = new System.Drawing.Size(1054, 468);
+            this.mleLog.Size = new System.Drawing.Size(1054, 439);
             this.mleLog.TabIndex = 11;
             // 
             // btnSaveSettings
@@ -262,26 +291,6 @@
             this.lblIntervall.Text = "Suchintervall in PCL-Ordner";
             this.lblIntervall.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblPclExtension
-            // 
-            this.lblPclExtension.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblPclExtension.Location = new System.Drawing.Point(533, 58);
-            this.lblPclExtension.Name = "lblPclExtension";
-            this.lblPclExtension.Size = new System.Drawing.Size(194, 24);
-            this.lblPclExtension.TabIndex = 15;
-            this.lblPclExtension.Text = "Dateierweiterung für PCL-Dateien";
-            this.lblPclExtension.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // slePclExtension
-            // 
-            this.slePclExtension.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.binSettings, "PclExtension", true));
-            this.slePclExtension.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.slePclExtension.Location = new System.Drawing.Point(730, 61);
-            this.slePclExtension.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.slePclExtension.Name = "slePclExtension";
-            this.slePclExtension.Size = new System.Drawing.Size(300, 20);
-            this.slePclExtension.TabIndex = 16;
-            // 
             // ckbStart
             // 
             this.ckbStart.AutoSize = true;
@@ -293,6 +302,41 @@
             this.ckbStart.Text = "Nach PCL-Dateien suchen";
             this.ckbStart.UseVisualStyleBackColor = true;
             this.ckbStart.CheckedChanged += new System.EventHandler(this.ckbStart_CheckedChanged);
+            // 
+            // lblDeleteOldPdf
+            // 
+            this.lblDeleteOldPdf.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDeleteOldPdf.Location = new System.Drawing.Point(3, 87);
+            this.lblDeleteOldPdf.Name = "lblDeleteOldPdf";
+            this.lblDeleteOldPdf.Size = new System.Drawing.Size(194, 24);
+            this.lblDeleteOldPdf.TabIndex = 18;
+            this.lblDeleteOldPdf.Text = "Tagesanzahl alte PDF löschen";
+            this.lblDeleteOldPdf.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // sleDeleteOldPdf
+            // 
+            this.sleDeleteOldPdf.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.binSettings, "DeleteOldPdfDayCounter", true));
+            this.sleDeleteOldPdf.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sleDeleteOldPdf.Location = new System.Drawing.Point(203, 90);
+            this.sleDeleteOldPdf.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.sleDeleteOldPdf.Name = "sleDeleteOldPdf";
+            this.sleDeleteOldPdf.Size = new System.Drawing.Size(294, 20);
+            this.sleDeleteOldPdf.TabIndex = 19;
+            // 
+            // lblDeleteOldPdfInfo
+            // 
+            this.panMain.SetColumnSpan(this.lblDeleteOldPdfInfo, 3);
+            this.lblDeleteOldPdfInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDeleteOldPdfInfo.Location = new System.Drawing.Point(503, 87);
+            this.lblDeleteOldPdfInfo.Name = "lblDeleteOldPdfInfo";
+            this.lblDeleteOldPdfInfo.Size = new System.Drawing.Size(524, 24);
+            this.lblDeleteOldPdfInfo.TabIndex = 20;
+            this.lblDeleteOldPdfInfo.Text = "0 Tage = es werden keine alten PDF gelöscht";
+            this.lblDeleteOldPdfInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // binSettings
             // 
@@ -311,6 +355,7 @@
             this.panMain.ResumeLayout(false);
             this.panMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sleIntervall)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sleDeleteOldPdf)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.binSettings)).EndInit();
             this.ResumeLayout(false);
 
@@ -318,7 +363,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPclDir;
         private System.Windows.Forms.Button btnPclDir;
         private System.Windows.Forms.TextBox slePclDir;
         private System.Windows.Forms.TableLayoutPanel panMain;
@@ -326,7 +371,7 @@
         private System.Windows.Forms.Label lblGhostExecutable;
         private System.Windows.Forms.Button btnTargetDir;
         private System.Windows.Forms.TextBox sleTargetDir;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblTargetDir;
         private System.Windows.Forms.TextBox sleGhostParams;
         private System.Windows.Forms.Label lblGhostParams;
         private System.Windows.Forms.Button btnGhostExecutable;
@@ -338,6 +383,9 @@
         private System.Windows.Forms.Label lblIntervall;
         private System.Windows.Forms.CheckBox ckbStart;
         private System.Windows.Forms.BindingSource binSettings;
+        private System.Windows.Forms.Label lblDeleteOldPdf;
+        private System.Windows.Forms.NumericUpDown sleDeleteOldPdf;
+        private System.Windows.Forms.Label lblDeleteOldPdfInfo;
     }
 }
 

@@ -22,7 +22,8 @@ namespace PclFileConvert
             }
          }
 
-        /// <summary>
+        /// <summary>        /// <summary>
+
         /// Fenster wird angezeigt
         /// </summary>
         /// <param name="e"></param>
@@ -44,6 +45,7 @@ namespace PclFileConvert
             {
                 Methods.Instance.AddNewLog("Beginne Suche nach PCL-Dateien", Methods.LogType.info, logGuiOutput: Methods.Instance.AutoMode ? null : mleLog);
                 Methods.Instance.WritePdfFiles(Methods.Instance.AutoMode ? null : mleLog);
+                Methods.Instance.DeleteOldPdfFiles(Methods.Instance.AutoMode ? null : mleLog);
             }
             catch (Exception error) { Methods.Instance.AddNewLog($"Fehler in der Verarbeitung des Ordners {error.Message} - {error.StackTrace}", Methods.LogType.error, logGuiOutput: Methods.Instance.AutoMode ? null : mleLog); }
             finally
