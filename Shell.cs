@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace PclFileConvert
@@ -14,7 +15,7 @@ namespace PclFileConvert
 
             //Timer zur Ordnerüberwachung initilisieren
             if (!DesignMode)
-            {
+            {                
                 _FileAllocationTimer = new Timer() { Interval = Methods.Instance.ProgramSettings.LookupInterval };
                 _FileAllocationTimer.Tick += _FileAllocationTimer_Tick;
                 //Timer starten, wenn Programm mit Automodeargument gestartet wurde
@@ -32,6 +33,17 @@ namespace PclFileConvert
             base.OnShown(e);
 
             binSettings.DataSource = Methods.Instance.ProgramSettings;
+        }
+
+        /// <summary>
+        /// Fenster wird geschlossen
+        /// </summary>        
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+
+            //Einstellungen speichern
+            Methods.Instance.SaveSettings();
         }
 
         /// <summary>
@@ -123,6 +135,8 @@ namespace PclFileConvert
             slePclDir.Enabled = controlsEnabled;
             slePclExtension.Enabled = controlsEnabled;
             sleTargetDir.Enabled = controlsEnabled;
+            sleDeleteOldPdf.Enabled = controlsEnabled;
+            ckbRemovePclFiles.Enabled = controlsEnabled;
 
             btnSaveSettings.Enabled = controlsEnabled;
         }

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileConvertItem.cs" />
     <Compile Include="Shell.cs">
       <SubType>Form</SubType>
     </Compile>

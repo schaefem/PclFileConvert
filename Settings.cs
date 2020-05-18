@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PclFileConvert
 {
+    [Serializable]
     public class Settings
     {
         #region Schnittstellen (Eigenschaften)
@@ -39,6 +41,11 @@ namespace PclFileConvert
         /// Tageszahl nach dem alte PDF-Dateien gelöscht werden (0=kein Löschen)
         /// </summary>
         public int DeleteOldPdfDayCounter { get; set; } = 0;
+
+        /// <summary>
+        /// Legt fest, ob PCL-Dateien nach der PDF Umwandlung gelöscht werden
+        /// </summary>
+        public bool RemovePclFiles { get; set; } = true;
         #endregion
     }
 }

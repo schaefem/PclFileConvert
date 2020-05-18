@@ -51,6 +51,7 @@
             this.lblDeleteOldPdf = new System.Windows.Forms.Label();
             this.sleDeleteOldPdf = new System.Windows.Forms.NumericUpDown();
             this.lblDeleteOldPdfInfo = new System.Windows.Forms.Label();
+            this.ckbRemovePclFiles = new System.Windows.Forms.CheckBox();
             this.binSettings = new System.Windows.Forms.BindingSource(this.components);
             this.panMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sleIntervall)).BeginInit();
@@ -114,18 +115,21 @@
             this.panMain.Controls.Add(this.lblPclDir, 0, 0);
             this.panMain.Controls.Add(this.btnPclDir, 2, 0);
             this.panMain.Controls.Add(this.slePclDir, 1, 0);
-            this.panMain.Controls.Add(this.mleLog, 0, 7);
-            this.panMain.Controls.Add(this.btnSaveSettings, 0, 8);
+            this.panMain.Controls.Add(this.mleLog, 0, 9);
+            this.panMain.Controls.Add(this.btnSaveSettings, 0, 10);
             this.panMain.Controls.Add(this.sleIntervall, 1, 4);
             this.panMain.Controls.Add(this.lblIntervall, 0, 4);
-            this.panMain.Controls.Add(this.ckbStart, 1, 8);
+            this.panMain.Controls.Add(this.ckbStart, 1, 10);
             this.panMain.Controls.Add(this.lblDeleteOldPdf, 0, 6);
             this.panMain.Controls.Add(this.sleDeleteOldPdf, 1, 6);
             this.panMain.Controls.Add(this.lblDeleteOldPdfInfo, 2, 6);
+            this.panMain.Controls.Add(this.ckbRemovePclFiles, 0, 8);
             this.panMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panMain.Location = new System.Drawing.Point(0, 0);
             this.panMain.Name = "panMain";
-            this.panMain.RowCount = 9;
+            this.panMain.RowCount = 11;
+            this.panMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.panMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.panMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.panMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.panMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
@@ -248,11 +252,11 @@
             // 
             this.panMain.SetColumnSpan(this.mleLog, 6);
             this.mleLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mleLog.Location = new System.Drawing.Point(3, 114);
+            this.mleLog.Location = new System.Drawing.Point(3, 143);
             this.mleLog.Multiline = true;
             this.mleLog.Name = "mleLog";
             this.mleLog.ReadOnly = true;
-            this.mleLog.Size = new System.Drawing.Size(1054, 439);
+            this.mleLog.Size = new System.Drawing.Size(1054, 410);
             this.mleLog.TabIndex = 11;
             // 
             // btnSaveSettings
@@ -338,6 +342,19 @@
             this.lblDeleteOldPdfInfo.Text = "0 Tage = es werden keine alten PDF gelöscht";
             this.lblDeleteOldPdfInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // ckbRemovePclFiles
+            // 
+            this.ckbRemovePclFiles.AutoSize = true;
+            this.panMain.SetColumnSpan(this.ckbRemovePclFiles, 2);
+            this.ckbRemovePclFiles.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.binSettings, "RemovePclFiles", true));
+            this.ckbRemovePclFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ckbRemovePclFiles.Location = new System.Drawing.Point(3, 119);
+            this.ckbRemovePclFiles.Name = "ckbRemovePclFiles";
+            this.ckbRemovePclFiles.Size = new System.Drawing.Size(494, 18);
+            this.ckbRemovePclFiles.TabIndex = 21;
+            this.ckbRemovePclFiles.Text = "PCL-Dateien nach PDF-Konvertierung löschen";
+            this.ckbRemovePclFiles.UseVisualStyleBackColor = true;
+            // 
             // binSettings
             // 
             this.binSettings.DataSource = typeof(PclFileConvert.Settings);
@@ -386,6 +403,7 @@
         private System.Windows.Forms.Label lblDeleteOldPdf;
         private System.Windows.Forms.NumericUpDown sleDeleteOldPdf;
         private System.Windows.Forms.Label lblDeleteOldPdfInfo;
+        private System.Windows.Forms.CheckBox ckbRemovePclFiles;
     }
 }
 
